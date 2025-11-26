@@ -1,10 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Galerie — Unsplash Style</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
-  <body></body>
+
+  <body>
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="#">Galerie<span class="accent">+</span></a>
+
+        <form id="searchForm" class="search" role="search">
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="Rechercher..."
+            required
+          />
+          <select id="orientation">
+            <option value="">Toutes</option>
+            <option value="landscape">Paysage</option>
+            <option value="portrait">Portrait</option>
+            <option value="squarish">Carré</option>
+          </select>
+          <button class="btn">Rechercher</button>
+        </form>
+      </div>
+    </header>
+
+    <main class="container">
+      <div id="status" class="status"></div>
+
+      <section id="gallery" class="gallery">
+        <p id="result"></p>
+      </section>
+
+      <div class="load-more-wrap">
+        <button id="loadMore" class="btn ghost">Charger plus</button>
+      </div>
+    </main>
+
+    <footer class="footer">© <span id="year"></span> — Galerie</footer>
+
+    <script src="script.js"></script>
+  </body>
 </html>

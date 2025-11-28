@@ -1,9 +1,14 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #0d1117;
+    background: linear-gradient(180deg,#071028 0%, #081522 100%);
     color: #e6eef6;
+    -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.4;
   }
+  *{box-sizing:border-box}
+  html,body{height:100%}
   
   .container {
     max-width: 1200px;
@@ -12,19 +17,22 @@ body {
   }
   
   .topbar {
-    border-bottom: 1px solid #222;
+    border-bottom:1px solid rgba(255,255,255,0.04);
+    backdrop-filter: blur(6px);
   }
   
   .topbar-inner {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+    display:flex;
+    gap:1rem;
+    align-items:center;
+    padding:0.8rem 1rem;
   }
   
   .brand {
-    color: white;
-    font-weight: bold;
-    text-decoration: none;
+    font-weight:700;
+  font-size:1.15rem;
+  color: #fff;
+  text-decoration:none;
   }
   
   .search {
@@ -52,9 +60,10 @@ body {
     margin: 2rem 0;
   }
   
-  .footer {
-    text-align: center;
-    padding: 1rem;
-    color: #999;
+  .footer{padding:1rem 0;
+    text-align:center;
+    color:rgba(230,238,246,0.6);
+    font-size:0.9rem
   }
+
   

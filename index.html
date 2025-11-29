@@ -45,7 +45,17 @@
     </main>
 
     <footer class="footer">© <span id="year"></span> — Galerie</footer>
-
+    <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-label="Image agrandie" >
+    <button id="modalClose" class="modal-close" aria-label="Fermer">
+      &times;
+    </button>
+    <button id="prevBtn" class="modal-nav" aria-label="Précédent">‹</button>
+    <button id="nextBtn" class="modal-nav" aria-label="Suivant">›</button>
+    <div class="modal-content">
+      <img id="modalImg" src="" alt="" />
+      <p id="modalCaption" class="caption"></p>
+    </div>
+  </div>
     <script src="script.js"></script>
   </body>
 </html>

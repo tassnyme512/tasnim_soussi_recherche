@@ -3,59 +3,76 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Galerie — Unsplash Style</title>
+    <title>Galerie — Unsplash</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
-
   <body>
     <header class="topbar">
       <div class="container topbar-inner">
         <a class="brand" href="#">Galerie<span class="accent">+</span></a>
 
-        <form id="searchForm" class="search" role="search">
+        <form
+          id="searchForm"
+          class="search"
+          role="search"
+          aria-label="Recherche photos"
+        >
           <input
             id="searchInput"
+            name="q"
             type="search"
-            placeholder="Rechercher..."
+            placeholder="Rechercher (ex: paysage, portrait)"
+            aria-label="Recherche"
             required
           />
-          <select id="orientation">
+          <select id="orientation" aria-label="Orientation">
             <option value="">Toutes</option>
             <option value="landscape">Paysage</option>
             <option value="portrait">Portrait</option>
             <option value="squarish">Carré</option>
           </select>
-          <button class="btn">Rechercher</button>
+          <button type="submit" class="btn">Rechercher</button>
         </form>
       </div>
     </header>
 
     <main class="container">
-      <div id="status" class="status">
+      <div id="status" class="status" role="status" aria-live="polite">
         Tapez un mot-clé et lancez la recherche.
       </div>
 
-      <section id="gallery" class="gallery">
+      <section id="gallery" class="gallery" aria-live="polite">
         <p id="result"></p>
       </section>
 
-      <div class="loadMoreWrap">
+      <div id="loadMoreWrap" class="load-more-wrap">
         <button id="loadMore" class="btn ghost">Charger plus</button>
       </div>
     </main>
 
-    <footer class="footer">© <span id="year"></span> — Galerie</footer>
-    <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-label="Image agrandie" >
-    <button id="modalClose" class="modal-close" aria-label="Fermer">
-      &times;
-    </button>
-    <button id="prevBtn" class="modal-nav" aria-label="Précédent">‹</button>
-    <button id="nextBtn" class="modal-nav" aria-label="Suivant">›</button>
-    <div class="modal-content">
-      <img id="modalImg" src="" alt="" />
-      <p id="modalCaption" class="caption"></p>
+    <footer class="footer">
+      <div class="container">
+        © <span id="year"></span> — Galerie Unsplash • 
+      </div>
+    </footer>
+
+    <div
+      id="modal"
+      class="modal"
+      aria-hidden="true"
+      role="dialog"
+      aria-label="Image agrandie"
+    >
+      <button id="modalClose" class="modal-close" aria-label="Fermer">
+        &times;
+      </button>
+      <button id="prevBtn" class="modal-nav" aria-label="Précédent">‹</button>
+      <button id="nextBtn" class="modal-nav" aria-label="Suivant">›</button>
+      <div class="modal-content">
+        <img id="modalImg" src="" alt="" />
+        <p id="modalCaption" class="caption"></p>
+      </div>
     </div>
-  </div>
     <script src="script.js"></script>
   </body>
 </html>

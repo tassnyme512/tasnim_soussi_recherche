@@ -1,6 +1,9 @@
+/* app.js - version robuste avec fallback
+   - Si UNSPLASH_ACCESS_KEY absent, on utilise des images de demo (picsum.photos).
+   - Garde la même UI : recherche, load more, modal.
+*/
 
-
-const UNSPLASH_ACCESS_KEY = "ND1op4H2pWsat5LNMc1F2CRNDWh5G532N0mKvwERhxA"; 
+const UNSPLASH_ACCESS_KEY = "ND1op4H2pWsat5LNMc1F2CRNDWh5G532N0mKvwERhxA"; // <-- mets ta clé réelle ici pour utiliser l'API
 const PER_PAGE = 12;
 
 // DOM
@@ -29,7 +32,7 @@ let allItems = []; // accumulated
 let currentIndex = -1;
 
 const useMock =
-  !UNSPLASH_ACCESS_KEY || UNSPLASH_ACCESS_KEY === "ND1op4H2pWsat5LNMc1F2CRNDWh5G532N0mKvwERhxA";
+  !UNSPLASH_ACCESS_KEY || UNSPLASH_ACCESS_KEY === "YOUR_UNSPLASH_ACCESS_KEY";
 
 // helpers
 function setStatus(msg) {
@@ -78,11 +81,12 @@ function createCard(item, index) {
   return a;
 }
 
+// Mock data generator (picsum.photos) used when no API key
 function generateMockResults(query, page = 1, per_page = PER_PAGE) {
   const items = [];
-  const startId = (page - 1) * per_page + 10;
+  const startId = (page - 1) * per_page + 10; // just pick some ids
   for (let i = 0; i < per_page; i++) {
-    const id = (startId + i) % 1000;
+    const id = (startId + i) % 1000; // picsum has many ids
     const w = 800;
     const h = 600;
     const smallW = 400;
@@ -104,7 +108,7 @@ function generateMockResults(query, page = 1, per_page = PER_PAGE) {
   return { results: items, total_pages: 10 };
 }
 
-
+// Unsplash search (only called when key present)
 async function searchUnsplash(query, page = 1, orientation = "") {
   const params = new URLSearchParams({
     query,
@@ -137,10 +141,12 @@ async function performSearch(q, page = 1, orientation = "") {
 
     let data;
     if (useMock) {
+      // fallback: generate mock results so UI always shows something
       console.warn(
         "No Unsplash key supplied — using mock images from picsum.photos"
       );
       data = generateMockResults(q, page, PER_PAGE);
+      // small delay to simulate network
       await new Promise((r) => setTimeout(r, 300));
     } else {
       data = await searchUnsplash(q, page, orientation);

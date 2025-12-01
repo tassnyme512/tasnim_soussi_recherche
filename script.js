@@ -32,7 +32,8 @@ let allItems = []; // accumulated
 let currentIndex = -1;
 
 const useMock =
-  !UNSPLASH_ACCESS_KEY || UNSPLASH_ACCESS_KEY === "YOUR_UNSPLASH_ACCESS_KEY";
+  !UNSPLASH_ACCESS_KEY ||
+  UNSPLASH_ACCESS_KEY === "ND1op4H2pWsat5LNMc1F2CRNDWh5G532N0mvwERhxA";
 
 // helpers
 function setStatus(msg) {
